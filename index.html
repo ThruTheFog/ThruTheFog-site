@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<script src="https://js.stripe.com/v3/"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<style>
+		main {
+			text-align: center;
+		}
+		
+		.section-with-image {
+			position: relative;
+			display: inline-block;
+		}
+		
+		.section-with-image h2:first-of-type {
+			position: absolute;
+			top: 50px;
+			left: 130px;
+			transform: translate(-50%, -50%);
+			color: white;
+			padding: 10px;
+			z-index: 1;
+		}
+		
+		.section-with-image img {
+			display: block;
+			margin: 0 auto;
+		}
+    		.container {
+      		max-width: 600px;
+      		margin: 0 auto;
+      		padding: 10px;
+      		background-color: tan;
+      		border-radius: 20px;
+    		}
+	</style>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-image: url("images/earth.jpg");
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: left top;
+			color: black
+			font-family: Arial, sans-serif;
+		}
+		.bottomtext {
+  			position: absolute;
+  			bottom: 0;
+  			left: 0;
+  			right: 0;
+  			text-align: center;
+  			color: white;
+		}
+		form {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			max-width: 200px;
+			margin: 20 auto;
+			padding: 20px;
+			background-color: #ddd;
+			border-radius: 10px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		input[type="email"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 10px;
+			width: 80%;
+		}
+
+		button[type="submit"] {
+ 		  padding: 10px 20px;
+ 		  background-color: #fff;
+  		  color: #000;
+  		  border: none;
+  		  border-radius: 15px;
+  		  cursor: pointer;
+  		  margin-top: 10px;
+  		  width: 100%;
+  		  box-shadow: 0 3px 0 #003d7e, 0 3px 3px rgba(0, 0, 0, 0.3);
+  		  transition: all 0.2s ease-in-out;
+		}
+
+		button[type="submit"]:hover {
+  		  background-color: #0062cc;
+		  color: #fff;
+		  box-shadow: 0 1px 0 #003d7e, 0 5px 5px rgba(0, 0, 0, 0.3);
+		}
+
+	</style>
+	<script>
+		$(document).ready(function() {
+			$('#subscribe').click(function(event) {
+				event.preventDefault();
+				var email = $('#email').val();
+				var apikey = 'YOUR_MAILCHIMP_API_KEY';
+				var listid = 'YOUR_MAILCHIMP_LIST_ID';
+				var data = {
+					email_address: email,
+					status: 'subscribed'
+				};
+				$.ajax({
+					url: 'https://usXX.api.mailchimp.com/3.0/lists/' + listid + '/members/',
+					type: 'POST',
+					data: JSON.stringify(data),
+					headers: {
+						'Authorization': 'apikey ' + apikey
+					},
+					contentType: 'application/json',
+					success: function(response) {
+						console.log(response);
+						alert('Thank you for subscribing!');
+					},
+					error: function(xhr, status, error) {
+						console.log(xhr.responseText);
+						alert('Sorry, there was an error subscribing. Please try again later.');
+					}
+				});
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function() {
+			$('#subscribe').click(function(event) {
+				event.preventDefault();
+				var email = $('#email').val();
+				var apikey = 'YOUR_MAILCHIMP_API_KEY';
+				var listid = 'YOUR_MAILCHIMP_LIST_ID';
+				var data = {
+					email_address: email,
+					status: 'subscribed'
+				};
+				$.ajax({
+					url: 'https://usXX.api.mailchimp.com/3.0/lists/' + listid + '/members/',
+					type: 'POST',
+					data: JSON.stringify(data),
+					headers: {
+						'Authorization': 'apikey ' + apikey
+					},
+					contentType: 'application/json',
+					success: function(response) {
+						console.log(response);
+						alert('Thank you for subscribing!');
+					},
+					error: function(xhr, status, error) {
+						console.log(xhr.responseText);
+						alert('Sorry, there was an error subscribing. Please try again later.');
+					}
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	
+	<main>
+	<h2 style="color: white;">Thru The Fog</h2>
+
+	<form>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
+		<button type="submit" id="subscribe">Join for free Capsule Briefings</button>
+	</form>
+
+	<section>
+		<div style="position: relative;">
+		<video controls width="560" height="315" src="images/GlobalWelcome.mp4" frameborder="0" poster="images/video-thumbnail.jpg" allowfullscreen style="position: relative; z-index: 0;"></video></div>
+	</section>
+	<br>
+
+	<section>
+		<div style="background-color: white; color: black; border: none"><p><strong>There</strong> are breakthroughs coming fast in biology, <br>artificial intelligence <br>and even life's purpose.</p>
+
+		<h2>WHAT you need to know.</h2><br>
+
+		<h2>Biology</h2>
+		<img style='vertical-align:middle;' width=75; height=75; border=0;' src='images/dna2.png'>
+
+		<p><strong>What</strong> to eat, and especially what not to. <br>When rejuvenation treatments are first available. 
+		<br>What clinical trials matter, most don't.</p>
+		<br>
+		<video controls width="560" height="315" src="images/regeneration.mp4" frameborder="0" poster="images/videoRejuvenateThumb.jpg" allowfullscreen></video></div>
+	</section>
+
+	<section><br>
+
+		<h2>AI</h2>
+		<img style='vertical-align:middle;' width=75; height=75; border=0;' src='images/ai.png' >
+
+		<p><strong>What </strong>is coming next year, <br>next month, <br>and how it will affect you.</p>
+		<br>
+		<video controls width="560" height="315" src="images/ml2.mp4" frameborder="0" poster="images/mlThumb.png" allowfullscreen></video>
+		
+	</section>
+
+	<section><br>
+
+
+		<h2>$$$</h2>
+		<img style='vertical-align:middle;' width=100; height=87; border=0;' src='images/goldEagle.png' >
+
+		<p><strong>What </strong>you can do to build your wealth <br>and make your money work for you.</p>
+		<br>
+		<video controls width="560" height="315" src="images/bitcoin.mp4" frameborder="0" poster="images/bitcoinThumb.png" allowfullscreen></video>
+	</section>
+
+	<section>
+		<br>
+		<img style='vertical-align:middle;' width=560; height=157; border=0;' src='images/2001ets2.png'>
+		<h2>Thru The Fog</h2>
+		<p>will guide you through these turbulent times. <br> The pace of change is accelerating,<br> don't be left behind.
+	</section>
+	<br>
+ 	<div class="container">
+    		<h1>Exclusive in depth analysis for $49/mo.</h1>
+    		<button id="subscribe-button">Register Membership</button>
+  	</div>
+  	<script>
+    		var stripe = Stripe('YOUR_PUBLISHABLE_KEY');
+
+    		var subscribeButton = document.getElementById('subscribe-button');
+    		subscribeButton.addEventListener('click', function() {
+      			stripe.redirectToCheckout({
+        			items: [{plan: 'YOUR_PLAN_ID', quantity: 1}],
+        			successUrl: 'https://example.com/success',
+        			cancelUrl: 'https://example.com/cancel',
+      			})
+      			.then(function(result) {
+        			// Handle any errors that occur during the redirect to Checkout
+      			});
+    		});
+  	</script>
+		<p><br><strong>You</strong> need to see the big picture, <br>and have the mindset <br>to keep your health and wealth.<br>	
+		<strong>Without health</strong>,<br> the wisest and wealthiest suffer.<br> <strong>Without wealth</strong>, <br>early rejuvenation will be out of reach.<br><strong>Without wisdom</strong>, <br>health and wealth are soon lost. <br><br><strong>Health, Wealth and Wisdom </strong><br>work together to reinforce each other, <br> and bring many benefits <br>to relationships, capabilities, and mental well being.</p><br>
+	</main>
+	
+	<footer>
+		<p>&copy; 2023 Thru The Fog.
+
